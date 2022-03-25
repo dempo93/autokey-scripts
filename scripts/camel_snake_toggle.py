@@ -1,4 +1,4 @@
-import stringcase
+import casefy
 from enum import Enum
 
 
@@ -25,7 +25,7 @@ def get_string_case(text):
     if is_upper:
         return Case.SCREAMING_SNAKE
     if not is_lower and not is_upper and text.find("_") == -1:
-        if text[0].isupper:
+        if text[0].isupper():
             return Case.PASCAL
         else:
             return Case.CAMEL
@@ -34,12 +34,12 @@ def get_string_case(text):
 
 def convert(text, case):
     if case is Case.PASCAL:
-        return stringcase.camelcase(text)
+        return casefy.camelcase(text)
     if case is Case.CAMEL:
-        return stringcase.snakecase(text)
+        return casefy.snakecase(text)
     if case is Case.SNAKE:
-        return stringcase.constcase(text)
-    return stringcase.pascalcase(text)
+        return casefy.constcase(text)
+    return casefy.pascalcase(text)
 
 
 def replace_text_and_select(text):

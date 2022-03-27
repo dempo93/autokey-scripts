@@ -4,7 +4,10 @@ from enum import Enum
 
 def selection_or_exit():
     try:
-        return clipboard.get_selection()
+        selection = clipboard.get_selection()
+        if len(selection) == 0:
+            exit(0)
+        return selection    
     except Exception:
         exit(0)
 
